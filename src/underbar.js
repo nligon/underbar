@@ -341,7 +341,7 @@
     arr = _.map(arr, function(item) {
       return item[0];
     });
-    
+
     return arr;
   };
 
@@ -356,7 +356,20 @@
 
   // Calls the method named by functionOrKey on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
-  _.invoke = function(collection, functionOrKey, args) {};
+  _.invoke = function(collection, functionOrKey, args) {
+    var res = [];
+
+    if (typeof functionOrKey === 'function') {
+      for (var i = 0; i < collection.length; i++) {
+        res.push(functionOrKey.apply(collection[i], args));
+      }
+    } else {
+      for (var i = 0; i < collection.length; i++) {
+        res.push(collection[i][functionOrKey].apply(collection[i], args));
+      }
+    }
+    return res;
+  };
 
   // Sort the object's values by a criterion produced by an iterator.
   // If iterator is a string, sort objects by that property with the name
