@@ -328,7 +328,22 @@
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
-  _.shuffle = function(array) {};
+  _.shuffle = function(array) {
+    var arr = array.slice();
+    arr = _.map(arr, function(item) {
+      return [item, Math.random()];
+    });
+
+    arr.sort(function(a, b) {
+      return (a[1] - b[1]);
+    });
+
+    arr = _.map(arr, function(item) {
+      return item[0];
+    });
+    
+    return arr;
+  };
 
 
   /**
