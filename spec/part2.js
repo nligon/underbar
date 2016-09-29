@@ -1,6 +1,23 @@
 (function() {
   'use strict';
 
+<<<<<<< HEAD
+=======
+  var checkForNativeMethods = function(runUnderbarFunction) {
+    it('should not use the native version of any underbar methods in its implementation', function() {
+      // These spies are set up in testSupport.js
+      runUnderbarFunction();
+      expect(Array.prototype.map.called).to.equal(false);
+      expect(Array.prototype.indexOf.called).to.equal(false);
+      expect(Array.prototype.forEach.called).to.equal(false);
+      expect(Array.prototype.filter.called).to.equal(false);
+      expect(Array.prototype.reduce.called).to.equal(false);
+      expect(Array.prototype.every.called).to.equal(false);
+      expect(Array.prototype.some.called).to.equal(false);
+    });
+  };
+
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
   describe('Part II', function() {
 
     describe('contains', function() {
@@ -13,7 +30,11 @@
       });
 
       it('should not mutate the input array', function() {
+<<<<<<< HEAD
         var input = [1,2,3,4,5];
+=======
+        var input = [1, 2, 3, 4, 5];
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var result = _.contains(input, 4);
 
         /*
@@ -39,28 +60,49 @@
          * that don't mutate their inputs!
          */
 
+<<<<<<< HEAD
         expect(input).to.eql([1,2,3,4,5])
       });
 
       it('should return true given an array and a value from that array', function(){
         var array = [1,2,3];
+=======
+        expect(input).to.eql([1, 2, 3, 4, 5]);
+      });
+
+      it('should return true given an array and a value from that array', function() {
+        var array = [1, 2, 3];
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var value = 1;
         expect(_.contains(array, value)).to.be.true;
       });
 
+<<<<<<< HEAD
       it('should return false given an array and a value not in that array', function(){
         var array = [1,2,3];
+=======
+      it('should return false given an array and a value not in that array', function() {
+        var array = [1, 2, 3];
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var value = 4;
         expect(_.contains(array, value)).to.be.false;
       });
 
+<<<<<<< HEAD
       it('should return true given a object and a value from that object', function(){
+=======
+      it('should return true given a object and a value from that object', function() {
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var object = { a: 1, b: 2, c: 3 };
         var value = 1;
         expect(_.contains(object, value)).to.be.true;
       });
 
+<<<<<<< HEAD
       it('should return false given an object and a value not in that object', function(){
+=======
+      it('should return false given an object and a value not in that object', function() {
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var object = { a: 1, b: 2, c: 3 };
         var value = 4;
         expect(_.contains(object, value)).to.be.false;
@@ -115,7 +157,11 @@
     });
 
     describe('some', function() {
+<<<<<<< HEAD
       var isEven = function(number){
+=======
+      var isEven = function(number) {
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         return number % 2 === 0;
       };
 
@@ -165,7 +211,11 @@
 
     describe('extend', function() {
       checkForNativeMethods(function() {
+<<<<<<< HEAD
         _.extend({ a: 1 },{ b: 1 }, { c: 1 });
+=======
+        _.extend({ a: 1 }, { b: 1 }, { c: 1 });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('returns the first argument', function() {
@@ -201,7 +251,11 @@
       });
 
       it('should extend from multiple source objects', function() {
+<<<<<<< HEAD
         var extended = _.extend({ x: 1 }, { a: 2 }, { b:3 });
+=======
+        var extended = _.extend({ x: 1 }, { a: 2 }, { b: 3 });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 
         expect(extended).to.eql({ x: 1, a: 2, b: 3 });
       });
@@ -215,7 +269,11 @@
 
     describe('defaults', function() {
       checkForNativeMethods(function() {
+<<<<<<< HEAD
         _.defaults({ a: 1 },{ b: 1 }, { c: 1 });
+=======
+        _.defaults({ a: 1 }, { b: 1 }, { c: 1 });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should be a function', function() {
@@ -319,9 +377,15 @@
 
         _.defaults(destination, source);
 
+<<<<<<< HEAD
         expect(destination.a).to.equal('')
         expect(destination.b).to.equal(0);
         expect(isNaN(destination.c)).to.equal(true)
+=======
+        expect(destination.a).to.equal('');
+        expect(destination.b).to.equal(0);
+        expect(isNaN(destination.c)).to.equal(true);
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should copy properties source an arbitrary number of source objects', function() {
@@ -366,7 +430,11 @@
         var noop = _.once(function() {});
 
         expect(noop).to.be.an.instanceOf(Function);
+<<<<<<< HEAD
       })
+=======
+      });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 
       it('should only run a user-defined function if it has not been run before', function() {
         var num = 0;
@@ -382,7 +450,11 @@
       });
 
       it('should apply arguments to the user-defined function', function() {
+<<<<<<< HEAD
         var add = _.once(function(x,y,z) {
+=======
+        var add = _.once(function(x, y, z) {
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
           return x + y + z;
         });
 
@@ -390,6 +462,7 @@
       });
 
       it('should return the result of the first call for every subsequent call', function() {
+<<<<<<< HEAD
         var add = _.once(function(x,y,z) {
           return x + y + z;
         });
@@ -397,6 +470,15 @@
         expect(add(1,2,3)).to.equal(6);
         expect(add(4,5,6)).to.equal(6);
         expect(add(7,8,9)).to.equal(6);
+=======
+        var add = _.once(function(x, y, z) {
+          return x + y + z;
+        });
+
+        expect(add(1, 2, 3)).to.equal(6);
+        expect(add(4, 5, 6)).to.equal(6);
+        expect(add(7, 8, 9)).to.equal(6);
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
     });
 
@@ -415,7 +497,11 @@
         _.memoize(function add(a, b) {
           return a + b;
         });
+<<<<<<< HEAD
       })
+=======
+      });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 
       it('should produce the same result as the non-memoized version', function() {
         expect(add(1, 2)).to.equal(3);
@@ -446,9 +532,15 @@
         var spy = sinon.spy(function() { return 'Dummy output'; });
         var memoSpy = _.memoize(spy);
 
+<<<<<<< HEAD
         memoSpy([1,2,3]);
         expect(spy).to.have.been.calledOnce;
         memoSpy([1,2,3]);
+=======
+        memoSpy([1, 2, 3]);
+        expect(spy).to.have.been.calledOnce;
+        memoSpy([1, 2, 3]);
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         expect(spy).to.have.been.calledOnce;
       });
 
@@ -457,9 +549,15 @@
         var spy = sinon.spy(function() { return 'Dummy output'; });
         var memoSpy = _.memoize(spy);
 
+<<<<<<< HEAD
         memoSpy([1,2,3]);
         expect(spy).to.have.been.calledOnce;
         memoSpy(1,2,3);
+=======
+        memoSpy([1, 2, 3]);
+        expect(spy).to.have.been.calledOnce;
+        memoSpy(1, 2, 3);
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         expect(spy).to.have.been.calledTwice;
       });
     });
@@ -469,11 +567,19 @@
 
       beforeEach(function() {
         callback = sinon.spy();
+<<<<<<< HEAD
       })
 
       checkForNativeMethods(function() {
         _.delay(callback, 100);
       })
+=======
+      });
+
+      checkForNativeMethods(function() {
+        _.delay(callback, 100);
+      });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 
       it('should only execute the function after the specified wait time', function() {
         _.delay(callback, 100);
@@ -496,8 +602,13 @@
 
     describe('shuffle', function() {
       checkForNativeMethods(function() {
+<<<<<<< HEAD
         _.shuffle([1, 2, 3, 4])
       })
+=======
+        _.shuffle([1, 2, 3, 4]);
+      });
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 
       it('should not modify the original object', function() {
         var numbers = [4, 5, 6];
@@ -526,6 +637,7 @@
 
   });
 
+<<<<<<< HEAD
   function checkForNativeMethods(runUnderbarFunction) {
     it('should not use the native version of any underbar methods in its implementation', function() {
       // These spies are set up in testSupport.js
@@ -539,4 +651,6 @@
       expect(Array.prototype.some.called).to.equal(false);
     });
   }
+=======
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 }());

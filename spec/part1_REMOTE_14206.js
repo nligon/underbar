@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-<<<<<<< HEAD
-=======
   var checkForNativeMethods = function(runUnderbarFunction) {
     it('should not use the native version of any underbar methods in its implementation', function() {
       // These spies are set up in testSupport.js
@@ -17,7 +15,6 @@
     });
   };
 
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
   describe('Part I', function() {
 
     describe('identity', function() {
@@ -36,25 +33,6 @@
 
     describe('first', function() {
       checkForNativeMethods(function() {
-<<<<<<< HEAD
-        _.first([1,2,3]);
-      });
-
-      it('should be able to pull out the first element of an array', function() {
-        expect(_.first([1,2,3])).to.equal(1);
-      });
-
-      it('should accept an index argument', function() {
-        expect(_.first([1,2,3], 2)).to.eql([1, 2]);
-      });
-
-      it('should return empty array if zero is passed in as the index', function() {
-        expect(_.first([1,2,3], 0)).to.eql([]);
-      });
-
-      it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
-        expect(_.first([1,2,3], 5)).to.eql([1, 2, 3]);
-=======
         _.first([1, 2, 3]);
       });
 
@@ -72,31 +50,11 @@
 
       it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
         expect(_.first([1, 2, 3], 5)).to.eql([1, 2, 3]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
     });
 
     describe('last', function() {
       checkForNativeMethods(function() {
-<<<<<<< HEAD
-        _.last([1,2,3]);
-      });
-
-      it('should pull the last element from an array', function() {
-        expect(_.last([1,2,3])).to.equal(3);
-      });
-
-      it('should accept an index argument', function() {
-        expect(_.last([1,2,3], 2)).to.eql([2, 3]);
-      });
-
-      it('should return empty array if zero is passed in as the index', function() {
-        expect(_.last([1,2,3], 0)).to.eql([]);
-      });
-
-      it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
-        expect(_.last([1,2,3], 5)).to.eql([1, 2, 3]);
-=======
         _.last([1, 2, 3]);
       });
 
@@ -114,17 +72,12 @@
 
       it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
         expect(_.last([1, 2, 3], 5)).to.eql([1, 2, 3]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
     });
 
     describe('each', function() {
       checkForNativeMethods(function() {
-<<<<<<< HEAD
-        _.each([1,2,3,4], function(number) {});
-=======
         _.each([1, 2, 3, 4], function(number) {});
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should be a function', function() {
@@ -132,20 +85,12 @@
       });
 
       it('should not return anything', function() {
-<<<<<<< HEAD
-        var returnValue = _.each([], function(){});
-=======
         var returnValue = _.each([], function() {});
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         expect(returnValue).to.not.exist;
       });
 
       it('should not mutate the input array', function() {
-<<<<<<< HEAD
-        var input = [1,2,3,4,5];
-=======
         var input = [1, 2, 3, 4, 5];
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var result = _.each(input, function(item) { /* noop */ });
 
         /*
@@ -171,11 +116,7 @@
          * that don't mutate their inputs!
          */
 
-<<<<<<< HEAD
-        expect(input).to.eql([1,2,3,4,5])
-=======
         expect(input).to.eql([1, 2, 3, 4, 5]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it(' should iterate over arrays and provide access to each value', function() {
@@ -186,11 +127,7 @@
           iterations.push(letter);
         });
 
-<<<<<<< HEAD
-        expect(iterations).to.eql(['a','b','c']);
-=======
         expect(iterations).to.eql(['a', 'b', 'c']);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should iterate over arrays and provide access to each index', function() {
@@ -295,11 +232,7 @@
 
     describe('indexOf', function() {
       checkForNativeMethods(function() {
-<<<<<<< HEAD
-        _.indexOf([10, 20, 30, 40], 40)
-=======
         _.indexOf([10, 20, 30, 40], 40);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should find 40 in the list', function() {
@@ -330,11 +263,7 @@
     describe('filter', function() {
       checkForNativeMethods(function() {
         var isEven = function(num) { return num % 2 === 0; };
-<<<<<<< HEAD
-        _.filter([1, 2, 3, 4], isEven)
-=======
         _.filter([1, 2, 3, 4], isEven);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should return all even numbers in an array', function() {
@@ -363,11 +292,7 @@
     describe('reject', function() {
       checkForNativeMethods(function() {
         var isEven = function(num) { return num % 2 === 0; };
-<<<<<<< HEAD
-        _.reject([1, 2, 3, 4, 5, 6], isEven)
-=======
         _.reject([1, 2, 3, 4, 5, 6], isEven);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should reject all even numbers', function() {
@@ -395,19 +320,11 @@
 
     describe('uniq', function() {
       checkForNativeMethods(function() {
-<<<<<<< HEAD
-        _.uniq([1, 2, 3, 4])
-      });
-
-      it('should not mutate the input array', function() {
-        var input = [1,2,3,4,5];
-=======
         _.uniq([1, 2, 3, 4]);
       });
 
       it('should not mutate the input array', function() {
         var input = [1, 2, 3, 4, 5];
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var result = _.uniq(input);
 
         /*
@@ -433,11 +350,7 @@
          * that don't mutate their inputs!
          */
 
-<<<<<<< HEAD
-        expect(input).to.eql([1,2,3,4,5])
-=======
         expect(input).to.eql([1, 2, 3, 4, 5]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should return all unique values contained in an unsorted array', function() {
@@ -465,19 +378,11 @@
       checkForNativeMethods(function() {
         _.map([1, 2, 3, 4], function(num) {
           return num * 2;
-<<<<<<< HEAD
-        })
-      });
-
-      it('should not mutate the input array', function() {
-        var input = [1,2,3,4,5];
-=======
         });
       });
 
       it('should not mutate the input array', function() {
         var input = [1, 2, 3, 4, 5];
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         var result = _.map(input, function(num) { /* noop */ });
 
         /*
@@ -503,11 +408,7 @@
          * that don't mutate their inputs!
          */
 
-<<<<<<< HEAD
-        expect(input).to.eql([1,2,3,4,5])
-=======
         expect(input).to.eql([1, 2, 3, 4, 5]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should apply a function to every value in an array', function() {
@@ -561,66 +462,22 @@
 
     describe('reduce', function() {
       checkForNativeMethods(function() {
-<<<<<<< HEAD
-        var add = function(tally, item) {return tally + item; };
-        _.reduce([1, 2, 3, 4], add)
-      });
-
-      // it('should be able to sum up an array', function() {
-      //   var add = function(tally, item) {return tally + item; };
-      //   var total = _.reduce([1, 2, 3], add, 0);
-
-      //   expect(total).to.equal(6);
-      // });
-
-      // it('should use the first element as an accumulator when none is given', function() {
-      //   var add = function(tally, item) {return tally + item; };
-      //   var total = _.reduce([1, 2, 3], add);
-
-      //   expect(total).to.equal(6);
-      // });
-
-      // it('should invoke the iterator on the first element when given an accumulator', function() {
-      //   var sumSquares = function(tally, item) {return tally + item * item; };
-      //   var total = _.reduce([2, 3], sumSquares, 0);
-
-      //   expect(total).to.equal(13);
-      // });
-
-      // it('should not invoke the iterator on the first element when using it as an accumulator', function() {
-      //   var sumSquares = function(tally, item) {return tally + item * item; };
-      //   var total = _.reduce([2, 3], sumSquares);
-
-      //   expect(total).to.equal(11);
-      // });
-
-=======
         var add = function(tally, item) { return tally + item; };
         _.reduce([1, 2, 3, 4], add);
       });
 
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       it('should be a function', function() {
         expect(_.reduce).to.be.an.instanceOf(Function);
       });
 
       it('should return a value', function() {
-<<<<<<< HEAD
-        var result = _.reduce([3,2,1], function(memo, item) {return item;});
-=======
         var result = _.reduce([3, 2, 1], function(memo, item) { return item; });
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         expect(result).to.be.defined;
       });
 
       it('should not mutate the input array', function() {
-<<<<<<< HEAD
-        var input = [1,2,3,4,5];
-        var result = _.reduce(input, function(memo, item) {return item;});
-=======
         var input = [1, 2, 3, 4, 5];
         var result = _.reduce(input, function(memo, item) { return item; });
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         
         /*
          * Mutation of inputs should be avoided without good justification otherwise
@@ -645,11 +502,7 @@
          * that don't mutate their inputs!
          */
 
-<<<<<<< HEAD
-        expect(input).to.eql([1,2,3,4,5])
-=======
         expect(input).to.eql([1, 2, 3, 4, 5]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should invoke the iterator function with arguments (memo, item) in that order', function() {
@@ -667,20 +520,12 @@
       it('should pass items of the array into the iterator from left to right', function() {
         var orderTraversed = [];
 
-<<<<<<< HEAD
-        _.reduce([1,2,3,4], function(memo, item) {
-=======
         _.reduce([1, 2, 3, 4], function(memo, item) {
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
           orderTraversed.push(item);
           return memo;
         }, 10);
 
-<<<<<<< HEAD
-        expect(orderTraversed).to.eql([1,2,3,4]);
-=======
         expect(orderTraversed).to.eql([1, 2, 3, 4]);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
       });
 
       it('should continue to call iterator even if the iterator returns undefined', function() {
@@ -694,20 +539,12 @@
           }
         };
 
-<<<<<<< HEAD
-        var total = _.reduce([1,1,2], returnFalsy);
-=======
         var total = _.reduce([1, 1, 2], returnFalsy);
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
         expect(total).to.equal(3);
       });
 
       it('should pass every item of the array into the iterator if a memo is passed in', function() {
-<<<<<<< HEAD
-        var result = _.reduce([1,2,3], function(memo, item) {
-=======
         var result = _.reduce([1, 2, 3], function(memo, item) {
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
           return memo - item;
         }, 10);
 
@@ -716,11 +553,7 @@
 
       it('should accept falsy values as a valid memo', function() {
         // Be careful how you check if a memo has been passed in
-<<<<<<< HEAD
-        var result = _.reduce([1,2,3], function(memo, item) {
-=======
         var result = _.reduce([1, 2, 3], function(memo, item) {
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
           return memo * item;
         }, 0);
 
@@ -728,11 +561,7 @@
       });
 
       it('should set memo to be the first item of the array if no memo is passed in', function() {
-<<<<<<< HEAD
-        var result = _.reduce([1,2,3], function(memo) {
-=======
         var result = _.reduce([1, 2, 3], function(memo) {
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
           return memo;
         });
 
@@ -741,11 +570,7 @@
 
 
       it('should pass the second item of the array into the iterator first if a memo is not passed in', function() {
-<<<<<<< HEAD
-        var result = _.reduce([3,2,1], function(memo, item) {
-=======
         var result = _.reduce([3, 2, 1], function(memo, item) {
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
           return memo - item;
         });
 
@@ -755,20 +580,4 @@
     });
   });
 
-<<<<<<< HEAD
-  function checkForNativeMethods(runUnderbarFunction) {
-    it('should not use the native version of any underbar methods in its implementation', function() {
-      // These spies are set up in testSupport.js
-      runUnderbarFunction();
-      expect(Array.prototype.map.called).to.equal(false);
-      expect(Array.prototype.indexOf.called).to.equal(false);
-      expect(Array.prototype.forEach.called).to.equal(false);
-      expect(Array.prototype.filter.called).to.equal(false);
-      expect(Array.prototype.reduce.called).to.equal(false);
-      expect(Array.prototype.every.called).to.equal(false);
-      expect(Array.prototype.some.called).to.equal(false);
-    });
-  }
-=======
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
 }());

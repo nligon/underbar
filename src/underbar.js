@@ -6,8 +6,8 @@
   // Returns whatever value is passed as the argument. This function doesn't
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
-  _.identity = function(val) {
-    return val;
+  _.identity = function(val) { << << << < HEAD
+    return val; === === = >>> >>> > 999 ab10aeda5ebe82eb896fad00e56b5afc70c35
   };
 
   /**
@@ -42,10 +42,12 @@
   };
 
   // Call "iterator(value, key, collection)"" for each element of collection.
+
   // Accepts both arrays and objects.
   //
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
+
 
   _.each = function(collection, iterator) {
     if (Array.isArray(collection)) {
@@ -87,6 +89,7 @@
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
+
     return _.filter(collection, function(item) {
       return !test(item);
     });
@@ -172,11 +175,10 @@
   //   return memo;
   // };
 
-  // AWESOME GREEK SHORT
+  // HYPER SHORT
 
-  // _.reduce = function(ζ, δ, λ) { _.each(ζ, function(ξ, ψ) { λ === undefined && !ψ ? λ = ζ[0] : λ = δ(λ, ξ); }); return λ; };
-
-  _.reduce = (ζ, δ, λ) => { _.each(ζ, (ξ, ψ) => { λ === undefined && !ψ ? λ = ζ[0] : λ = δ(λ, ξ); }); return λ; };
+  _.reduce = (collection, iterator, memo) => { _.each(collection, (item, idx) => { memo === undefined && !idx ? memo = collection[0] : memo = iterator(memo, item); });
+    return memo; };
 
   // GOOD
   // _.reduce = function(collection, iterator, memo) {
@@ -365,6 +367,7 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+
     var args = Array.prototype.slice.call(arguments, 2);
     setTimeout(function() {
       func.apply(this, args);
@@ -395,6 +398,14 @@
 
   /**
    * EXTRA CREDIT
+=======
+  _.shuffle = function(array) {
+  };
+
+
+  /**
+   * ADVANCED
+>>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
    * =================
    *
    * Note: This is the end of the pre-course curriculum. Feel free to continue,
@@ -403,12 +414,14 @@
 
   // Calls the method named by functionOrKey on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
+
   _.invoke = function(collection, functionOrKey, args) {};
 
   // Sort the object's values by a criterion produced by an iterator.
   // If iterator is a string, sort objects by that property with the name
   // of that string. For example, _.sortBy(people, 'name') should sort
   // an array of people by their name.
+
   _.sortBy = function(collection, iterator) {};
 
   // Zip together two or more arrays with elements of the same index
@@ -416,6 +429,7 @@
   //
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
+
   _.zip = function() {};
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
@@ -437,5 +451,6 @@
   // on this function.
   //
   // Note: This is difficult! It may take a while to implement.
+
   _.throttle = function(func, wait) {};
 }());
