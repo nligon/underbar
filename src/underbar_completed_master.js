@@ -42,12 +42,10 @@
   };
 
   // Call "iterator(value, key, collection)"" for each element of collection.
-
   // Accepts both arrays and objects.
   //
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
-
 
   _.each = function(collection, iterator) {
     if (Array.isArray(collection)) {
@@ -60,8 +58,6 @@
       }
     }
   };
-
-  // someArr.each()
 
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
@@ -89,7 +85,6 @@
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
-
     return _.filter(collection, function(item) {
       return !test(item);
     });
@@ -153,9 +148,8 @@
   //     return total + number * number;
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
-
   //_.reduce = function(collection, iterator, accumulator) {};
-
+  
   // BEST
   // _.reduce = function(collection, iterator, accumulator) {
   //   _.each(collection, function(item, idxOrKey) {
@@ -176,12 +170,10 @@
   //   return memo;
   // };
 
-  // HYPER SHORT
+  // AWESOME GREEK SHORT
+  
+  // _.reduce = function(ζ, δ, λ) { _.each(ζ, function(ξ, ψ) { λ === undefined && !ψ ? λ = ζ[0] : λ = δ(λ, ξ); }); return λ; };
 
-  _.reduce = (collection, iterator, memo) => {
-    _.each(collection, (item, idx) => { memo === undefined && !idx ? memo = collection[0] : memo = iterator(memo, item); });
-    return memo;
-  };
 
   // GOOD
   // _.reduce = function(collection, iterator, memo) {
@@ -206,30 +198,40 @@
   //   return memo;
   // };
 
+  // GOOD
+  // _.reduce = function(collection, iterator, memo) {
+  //   (memo === undefined) && (memo = collection[0]);
+  //   _.each(collection, function(item, index) {
+  //     (index > 0 || memo !== collection[0]) && (memo = iterator(memo, item));
+  //   });
+  //   return memo;
+  // };
+
+  // GOOD
+  // _.reduce = function(collection, iterator, accumulator) {
+  //   var results = [];
+  //   _.each(collection, function(item, idx, set) {
+  //     if (accumulator === undefined && idx === 0) {
+  //       return accumulator = collection[0];
+  //     }
+  //     accumulator = iterator(accumulator, item);
+  //   });
+  //   return accumulator;
+  // };
 
 
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
-    return _.reduce(collection, function(accumulator, item) {
-      if (item === target) {
-        accumulator = true;
-      }
-      return accumulator;
-    }, false);
+    _.reduce()
   };
 
   // Determine whether all of the elements match a truth test.    
   _.every = function(collection, iterator) {
     iterator = iterator || _.identity;
     return _.reduce(collection, function(memo, item) {
-      if (memo !== true || !!iterator(item) !== true) {
-        return false;
-      } else {
-        return true;
-      }
+      // try to return memo - if it's true, then return the boolean of the iterator
+      return memo && !!iterator(item);
     }, true);
-
-    return memo;
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
@@ -264,26 +266,17 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
-
-  // _.extend = function(obj) {
-
-  // };
-
-
   _.extend = function(obj) {
-    var objects = Array.prototype.slice.call(arguments);
-    _.each(objects, function(argObject) { //loop over each argument
-      _.each(argObject, function(value, key) { //loop over every key/value
-        obj[key] = value; //set as original object's key/values
+    _.each(arguments, function(argObject) {
+      _.each(argObject, function(value, key) {
+        obj[key] = value;
       });
     });
-    return obj; //return original object
+    return obj;
   };
 
-  // invoking _.extend:
+  // implementing _.extend:
   // _.extend(obj1, { a: 1, b: 2 }, { c: 3 });
-
-
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
@@ -297,6 +290,7 @@
     });
     return obj;
   };
+
 
   /**
    * FUNCTIONS
@@ -355,7 +349,6 @@
   // The arguments for the original function are passed after the wait
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
-
   _.delay = function(func, wait) {
     var args = Array.prototype.slice.call(arguments, 2);
     setTimeout(function() {
@@ -375,7 +368,6 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
 
-
   _.shuffle = function(array) {
     var newArray = [];
     var randIndex;
@@ -388,22 +380,6 @@
 
   /**
    * EXTRA CREDIT
-=======
->>>>>>> 1f1fd21bef194371198a8cc216c2e524fd61904e
-  _.shuffle = function(array) {
-    var newArray = [];
-    var randIndex;
-    for (var i = 0; i < array.length; i++) {
-      randIndex = Math.floor(Math.random() * 10);
-      newArray.splice(randIndex, 0, array[i]);
-    }
-    return newArray;
-  };
-
-
-  /**
-   * ADVANCED
->>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
    * =================
    *
    * Note: This is the end of the pre-course curriculum. Feel free to continue,
@@ -412,14 +388,12 @@
 
   // Calls the method named by functionOrKey on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
-
   _.invoke = function(collection, functionOrKey, args) {};
 
   // Sort the object's values by a criterion produced by an iterator.
   // If iterator is a string, sort objects by that property with the name
   // of that string. For example, _.sortBy(people, 'name') should sort
   // an array of people by their name.
-
   _.sortBy = function(collection, iterator) {};
 
   // Zip together two or more arrays with elements of the same index
@@ -427,7 +401,6 @@
   //
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
-
   _.zip = function() {};
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
@@ -449,6 +422,5 @@
   // on this function.
   //
   // Note: This is difficult! It may take a while to implement.
-
   _.throttle = function(func, wait) {};
 }());
