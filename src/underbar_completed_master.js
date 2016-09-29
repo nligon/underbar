@@ -59,8 +59,6 @@
     }
   };
 
-  // someArr.each()
-
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
 
@@ -151,7 +149,7 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   //_.reduce = function(collection, iterator, accumulator) {};
-
+  
   // BEST
   // _.reduce = function(collection, iterator, accumulator) {
   //   _.each(collection, function(item, idxOrKey) {
@@ -173,10 +171,9 @@
   // };
 
   // AWESOME GREEK SHORT
-
+  
   // _.reduce = function(ζ, δ, λ) { _.each(ζ, function(ξ, ψ) { λ === undefined && !ψ ? λ = ζ[0] : λ = δ(λ, ξ); }); return λ; };
 
-  _.reduce = (ζ, δ, λ) => { _.each(ζ, (ξ, ψ) => { λ === undefined && !ψ ? λ = ζ[0] : λ = δ(λ, ξ); }); return λ; };
 
   // GOOD
   // _.reduce = function(collection, iterator, memo) {
@@ -201,29 +198,40 @@
   //   return memo;
   // };
 
+  // GOOD
+  // _.reduce = function(collection, iterator, memo) {
+  //   (memo === undefined) && (memo = collection[0]);
+  //   _.each(collection, function(item, index) {
+  //     (index > 0 || memo !== collection[0]) && (memo = iterator(memo, item));
+  //   });
+  //   return memo;
+  // };
+
+  // GOOD
+  // _.reduce = function(collection, iterator, accumulator) {
+  //   var results = [];
+  //   _.each(collection, function(item, idx, set) {
+  //     if (accumulator === undefined && idx === 0) {
+  //       return accumulator = collection[0];
+  //     }
+  //     accumulator = iterator(accumulator, item);
+  //   });
+  //   return accumulator;
+  // };
+
 
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
-    return _.reduce(collection, function(accumulator, item) {
-      if (item === target) {
-        accumulator = true;
-      }
-      return accumulator;
-    }, false);
+    _.reduce()
   };
 
   // Determine whether all of the elements match a truth test.    
   _.every = function(collection, iterator) {
     iterator = iterator || _.identity;
     return _.reduce(collection, function(memo, item) {
-      if (memo !== true || !!iterator(item) !== true) {
-        return false;
-      } else {
-        return true;
-      }
+      // try to return memo - if it's true, then return the boolean of the iterator
+      return memo && !!iterator(item);
     }, true);
-
-    return memo;
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
@@ -258,26 +266,17 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
-
-  // _.extend = function(obj) {
-
-  // };
-
-
   _.extend = function(obj) {
-    var objects = Array.prototype.slice.call(arguments);
-    _.each(objects, function(argObject) { //loop over each argument
-      _.each(argObject, function(value, key) { //loop over every key/value
-        obj[key] = value; //set as original object's key/values
+    _.each(arguments, function(argObject) {
+      _.each(argObject, function(value, key) {
+        obj[key] = value;
       });
     });
-    return obj; //return original object
+    return obj;
   };
 
-  // invoking _.extend:
+  // implementing _.extend:
   // _.extend(obj1, { a: 1, b: 2 }, { c: 3 });
-
-
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
@@ -290,20 +289,6 @@
       });
     });
     return obj;
-  };
-
-  // Danial's version
-  var defaults = function(obj) {
-    var objects = Array.prototype.slice.call(arguments, 1);
-    each(objects, function(argObject) { //loop over each argument
-      each(argObject, function(value, key) { //loop over every key/value
-        if (!obj.hasOwnProperty(key)) {
-          console.log(value, key);
-          obj[key] = value; //set as original object's key/values
-        }
-      });
-    });
-    return obj; //return original object
   };
 
 
