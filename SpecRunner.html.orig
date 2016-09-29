@@ -30,14 +30,10 @@
     <script src="spec/part1.js"></script>
     <script src="spec/part2.js"></script>
 <<<<<<< HEAD
-    <script src="spec/advanced.js"></script>
-=======
-<<<<<<< HEAD
     <script src="spec/extraCredit.js"></script>
 =======
     <script src="spec/advanced.js"></script>
 >>>>>>> 999ab10aeda5ebe82eb896fad00e56b5afc70c35
->>>>>>> 2881499b1da469162a72735e56af707f979d5c19
     <!-- End test files -->
   </head>
   <body>

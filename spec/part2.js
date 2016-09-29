@@ -18,6 +18,13 @@
   describe('Part II', function() {
 
     describe('contains', function() {
+      checkForNativeMethods(function() {
+        _.contains([4, 5, 6], 2);
+      });
+
+      it('should be a function', function() {
+        expect(_.contains).to.be.an.instanceOf(Function);
+      });
 
       it('should not mutate the input array', function() {
         var input = [1, 2, 3, 4, 5];
@@ -56,9 +63,6 @@
       });
 
       it('should return false given an array and a value not in that array', function() {
-        // Replace this line with an `expect` statement that tests
-        // the behavior described by the `it` string
-        // throw new Error('This test is missing.');
         var array = [1, 2, 3];
         var value = 4;
         expect(_.contains(array, value)).to.be.false;
@@ -82,24 +86,23 @@
         return num % 2 === 0;
       };
 
+      checkForNativeMethods(function() {
+        _.every([4, 5, 6], _.identity);
+      });
 
       it('passes by default for an empty collection', function() {
         expect(_.every([], _.identity)).to.be.true;
       });
 
-      it('passes for a collection of all-truthy values', function() {
+      it('passes for a collection of all-truthy results', function() {
         expect(_.every([true, {}, 1], _.identity)).to.be.true;
       });
 
-      it('fails for a collection of all-falsy values', function() {
-        // Replace this line with an `expect` statement that tests
-        // the behavior described by the `it` string
-        // throw new Error('This test is missing.');
-
-        expect(_.every([1, 3, 5], isEven)).to.be.false;
+      it('fails for a collection of all-falsy results', function() {
+        expect(_.every([null, 0, undefined], _.identity)).to.be.false;
       });
 
-      it('fails for a collection containing mixed falsy and truthy values', function() {
+      it('fails for a collection containing mixed falsy and truthy results', function() {
         expect(_.every([true, false, 1], _.identity)).to.be.false;
         expect(_.every([1, undefined, true], _.identity)).to.be.false;
       });
@@ -130,6 +133,9 @@
         return number % 2 === 0;
       };
 
+      checkForNativeMethods(function() {
+        _.some([4, 5, 6], _.identity);
+      });
 
       it('should fail by default for an empty collection', function() {
         expect(_.some([])).to.be.false;
@@ -152,10 +158,7 @@
       });
 
       it('should fail for a set containing no matching values', function() {
-        // Replace this line with an `expect` statement that tests
-        // the behavior described by the `it` string
-        // throw new Error('This test is missing.');
-        expect(_.some([1, 3, 5], isEven));
+        expect(_.some([1, 11, 29], isEven)).to.be.false;
       });
 
       it('should pass for a collection containing one matching value', function() {
@@ -175,6 +178,9 @@
     });
 
     describe('extend', function() {
+      checkForNativeMethods(function() {
+        _.extend({ a: 1 }, { b: 1 }, { c: 1 });
+      });
 
       it('returns the first argument', function() {
         var destination = {};
@@ -193,10 +199,7 @@
       });
 
       it('should override properties found on the destination', function() {
-        // Replace this line with an `expect` statement that tests
-        // the behavior described by the `it` string
-        // throw new Error('This test is missing.');
-        var destination = { a: 'c'};
+        var destination = { a: 'x' };
         var source = { a: 'b' };
         var extended = _.extend(destination, source);
 
@@ -225,6 +228,13 @@
     });
 
     describe('defaults', function() {
+      checkForNativeMethods(function() {
+        _.defaults({ a: 1 }, { b: 1 }, { c: 1 });
+      });
+
+      it('should be a function', function() {
+        expect(_.defaults).to.be.an.instanceOf(Function);
+      });
 
       it('should return the original target object', function() {
         /*
@@ -276,15 +286,14 @@
       });
 
       it('should copy any property whose key is not already set on the target', function() {
-        // Replace this line with an `expect` statement that tests
-        // the behavior described by the `it` string
-        // throw new Error('This test is missing.');
-        var destination = { a: 0};
-        var source = { a: 1, b: 2};
+        var destination = {};
+        var source = { a: 1, b: 2, c: 'three' };
+
         _.defaults(destination, source);
 
+        expect(destination.a).to.equal(1);
         expect(destination.b).to.equal(2);
-
+        expect(destination.c).to.equal('three');
       });
 
       it('should not copy a property if that key is already set on the target', function() {
@@ -319,7 +328,7 @@
          * precise enough with our conditional check, we might get these unexpected results
          */
 
-        var destination = { a: '', b: 0, c: NaN };
+        var destination = {a: '', b: 0, c: NaN };
         var source = { a: 1, b: 2, c: 3 };
 
         _.defaults(destination, source);
@@ -355,6 +364,16 @@
     });
 
     describe('once', function() {
+      checkForNativeMethods(function() {
+        var num = 0;
+        var increment = _.once(function() {
+          num += 1;
+        });
+      });
+
+      it('should be a function', function() {
+        expect(_.once).to.be.an.instanceOf(Function);
+      });
 
       it('should return a function', function() {
         // noop is short for `no-operation` and is pronounced `no-op`
@@ -406,6 +425,11 @@
         memoAdd = _.memoize(add);
       });
 
+      checkForNativeMethods(function() {
+        _.memoize(function add(a, b) {
+          return a + b;
+        });
+      });
 
       it('should produce the same result as the non-memoized version', function() {
         expect(add(1, 2)).to.equal(3);
@@ -422,8 +446,7 @@
         // Here, we wrap a dummy function in a spy. A spy is a wrapper function (much like _.memoize
         // or _.once) that keeps track of interesting information about the function it's spying on;
         // e.g. whether or not the function has been called.
-        var spy = sinon.spy(function() {
-          return 'Dummy output'; });
+        var spy = sinon.spy(function() { return 'Dummy output'; });
         var memoSpy = _.memoize(spy);
 
         memoSpy(10);
@@ -431,11 +454,10 @@
         memoSpy(10);
         expect(spy).to.have.been.calledOnce;
       });
-
+      
       it('should not run the memoized function twice when given a reference type as an argument', function() {
         // Be careful how you are checking if a set of arguments has been passed in already
-        var spy = sinon.spy(function() {
-          return 'Dummy output'; });
+        var spy = sinon.spy(function() { return 'Dummy output'; });
         var memoSpy = _.memoize(spy);
 
         memoSpy([1, 2, 3]);
@@ -446,8 +468,7 @@
 
       it('should run the memoized function twice when given an array and then given a list of arguments', function() {
         // Be careful how you are checking if a set of arguments has been passed in already
-        var spy = sinon.spy(function() {
-          return 'Dummy output'; });
+        var spy = sinon.spy(function() { return 'Dummy output'; });
         var memoSpy = _.memoize(spy);
 
         memoSpy([1, 2, 3]);
@@ -464,6 +485,9 @@
         callback = sinon.spy();
       });
 
+      checkForNativeMethods(function() {
+        _.delay(callback, 100);
+      });
 
       it('should only execute the function after the specified wait time', function() {
         _.delay(callback, 100);
@@ -485,6 +509,9 @@
     });
 
     describe('shuffle', function() {
+      checkForNativeMethods(function() {
+        _.shuffle([1, 2, 3, 4]);
+      });
 
       it('should not modify the original object', function() {
         var numbers = [4, 5, 6];
